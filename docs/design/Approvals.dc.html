@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manager dashboard and approvals</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;family=Silkscreen&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EDEFF3}
+a{color:#3048E0}a:hover{color:#1F33B0}
+</style>
+</helmet>
+<div style="min-height: 980px; background: #EDEFF3; color: #141A2A; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column;">
+
+  <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding: 16px 32px; background: #141A2A; color: #FFFFFF;">
+    <div style="display: flex; align-items: center; gap: 12px; flex-grow: 1;">
+      <div style="width: 36px; height: 36px; background: #3048E0; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: Silkscreen, monospace; font-size: 14px;">DF</div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px;">Digitalfeet AI Office</div>
+    </div>
+    <nav aria-label="Views" style="display: flex; flex-wrap: wrap; gap: 4px; background: #232A3D; padding: 4px; border-radius: 10px;">
+      <a href="Main.dc.html" style="padding: 10px 16px; border-radius: 8px; color: #FFFFFF; text-decoration: none; font-size: 14px;">Office floor</a>
+      <a href="Approvals.dc.html" style="padding: 10px 16px; border-radius: 8px; background: #FFFFFF; color: #141A2A; text-decoration: none; font-size: 14px; font-weight: 600;">Dashboard</a>
+      <a href="Agent.dc.html" style="padding: 10px 16px; border-radius: 8px; color: #FFFFFF; text-decoration: none; font-size: 14px;">Agents</a>
+    </nav>
+  </header>
+
+  <div style="max-width: 1376px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 24px;">
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+      <div style="background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; padding: 16px 20px;">
+        <div style="font-size: 13px; color: #4A5468;">Waiting for approval</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; color: #B45309;">3</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; padding: 16px 20px;">
+        <div style="font-size: 13px; color: #4A5468;">Tasks in progress</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;">7</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; padding: 16px 20px;">
+        <div style="font-size: 13px; color: #4A5468;">Finished today</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;">12</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; padding: 16px 20px;">
+        <div style="font-size: 13px; color: #4A5468;">Spend this month</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; padding-top: 6px;">[$ spent] <span style="font-size: 15px; color: #4A5468; font-weight: 500;">of [$ cap]</span></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+
+      <section aria-labelledby="queue" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+          <h1 id="queue" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px;">Needs your approval</h1>
+          <div role="group" aria-label="Filter" style="display: flex; gap: 4px; background: #FFFFFF; border: 1px solid #D5DAE3; padding: 4px; border-radius: 10px;">
+            <button type="button" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 6px; background: #141A2A; color: #FFFFFF; font: inherit; font-size: 13px; font-weight: 600;">All 3</button>
+            <button type="button" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 6px; background: transparent; color: #141A2A; font: inherit; font-size: 13px;">Publish</button>
+            <button type="button" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 6px; background: transparent; color: #141A2A; font: inherit; font-size: 13px;">Client email</button>
+            <button type="button" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 6px; background: transparent; color: #141A2A; font: inherit; font-size: 13px;">Invoices</button>
+          </div>
+        </div>
+
+        <article style="background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; overflow: hidden;">
+          <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;">
+              <span style="font-size: 12px; font-weight: 600; background: #FEF3E2; color: #8A3D06; padding: 4px 8px; border-radius: 4px;">Publish to live site</span>
+              <span style="font-size: 13px; color: #4A5468;">Requested by <strong style="color: #141A2A;">Forge</strong> · 22 min ago</span>
+            </div>
+            <h2 style="margin: 0; font-size: 18px; font-weight: 600;">Update 2 plugins on [Client C] WordPress (live)</h2>
+            <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4A5468;">Tested on staging. Scout ran the QA checklist: 18 pages checked, no broken layouts, forms submit. Backup taken before the change.</p>
+            <div style="background: #141A2A; color: #E3E7EF; border-radius: 8px; padding: 12px 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; overflow-x: auto;">
+              <div><span style="color: #FCA5A5;">− [plugin A] 4.2.1</span>   <span style="color: #86EFAC;">+ [plugin A] 4.3.0</span></div>
+              <div><span style="color: #FCA5A5;">− [plugin B] 2.0.7</span>   <span style="color: #86EFAC;">+ [plugin B] 2.1.0</span></div>
+            </div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px; background: #F6F7FA; border-top: 1px solid #D5DAE3;">
+            <button type="button" style="min-height: 44px; padding: 0 18px; background: #1F7A4D; color: #FFFFFF; border: 0; border-radius: 8px; font: inherit; font-weight: 600; font-size: 14px;">Approve &amp; publish</button>
+            <button type="button" style="min-height: 44px; padding: 0 18px; background: #FFFFFF; color: #141A2A; border: 1px solid #A3ABBC; border-radius: 8px; font: inherit; font-size: 14px;">Ask for changes</button>
+            <button type="button" style="min-height: 44px; padding: 0 18px; background: transparent; color: #B42318; border: 0; font: inherit; font-size: 14px;">Reject</button>
+            <a href="Agent.dc.html" style="margin-left: auto; align-self: center; font-size: 14px;">Open Forge's desk</a>
+          </div>
+        </article>
+
+        <article style="background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; overflow: hidden;">
+          <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;">
+              <span style="font-size: 12px; font-weight: 600; background: #E8ECFD; color: #1F33B0; padding: 4px 8px; border-radius: 4px;">Client email</span>
+              <span style="font-size: 13px; color: #4A5468;">Requested by <strong style="color: #141A2A;">Ledger</strong> · 4 min ago</span>
+            </div>
+            <h2 style="margin: 0; font-size: 18px; font-weight: 600;">Send Q3 website report to [Client B]</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+              <div style="width: 96px; height: 124px; border: 1px solid #D5DAE3; border-radius: 6px; background: #F6F7FA; display: flex; flex-direction: column; gap: 6px; padding: 10px; box-sizing: border-box;">
+                <div style="height: 8px; background: #3048E0; width: 60%;"></div>
+                <div style="height: 4px; background: #D5DAE3;"></div>
+                <div style="height: 4px; background: #D5DAE3; width: 80%;"></div>
+                <div style="height: 36px; background: #E8ECFD; margin-top: 4px;"></div>
+                <div style="font-size: 10px; color: #4A5468; margin-top: auto;">PDF · 9 pages</div>
+              </div>
+              <div style="flex: 1 1 240px; font-size: 14px; line-height: 1.55; border-left: 0; background: #F6F7FA; border-radius: 6px; padding: 12px 14px;">
+                <div style="font-size: 12px; color: #4A5468; margin-bottom: 4px;">To: [client contact] · Subject: Your Q3 website report</div>
+                Hi [Name], attached is your Q3 report. Uptime, speed and search results are summarised on page 1, and our 3 recommendations are on page 8…
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px; background: #F6F7FA; border-top: 1px solid #D5DAE3;">
+            <button type="button" style="min-height: 44px; padding: 0 18px; background: #1F7A4D; color: #FFFFFF; border: 0; border-radius: 8px; font: inherit; font-weight: 600; font-size: 14px;">Approve &amp; send</button>
+            <button type="button" style="min-height: 44px; padding: 0 18px; background: #FFFFFF; color: #141A2A; border: 1px solid #A3ABBC; border-radius: 8px; font: inherit; font-size: 14px;">Edit email</button>
+            <button type="button" style="min-height: 44px; padding: 0 18px; background: transparent; color: #B42318; border: 0; font: inherit; font-size: 14px;">Reject</button>
+          </div>
+        </article>
+
+        <article style="background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; padding: 16px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+          <span style="font-size: 12px; font-weight: 600; background: #E6F4EC; color: #155C39; padding: 4px 8px; border-radius: 4px;">Invoice</span>
+          <div style="flex: 1 1 260px;">
+            <div style="font-weight: 600; font-size: 15px;">November hosting invoices, [n] clients</div>
+            <div style="font-size: 13px; color: #4A5468;">Requested by <strong style="color: #141A2A;">Ops</strong> · yesterday</div>
+          </div>
+          <button type="button" style="min-height: 44px; padding: 0 18px; background: #FFFFFF; color: #141A2A; border: 1px solid #A3ABBC; border-radius: 8px; font: inherit; font-size: 14px;">Review</button>
+        </article>
+      </section>
+
+      <aside aria-labelledby="team" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #D5DAE3; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+        <h2 id="team" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Team &amp; budgets</h2>
+        <sc-for list="{{agents}}" as="a" hint-placeholder-count="8">
+          <a href="Agent.dc.html" style="display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: #141A2A; padding: 10px; margin: -10px; border-radius: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; border-radius: 6px; background: {{a.color}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: Silkscreen, monospace; font-size: 12px;">{{a.initial}}</div>
+              <div style="flex-grow: 1;">
+                <div style="font-weight: 600; font-size: 14px;">{{a.name}} <span style="font-weight: 400; color: #4A5468;">· {{a.role}}</span></div>
+                <div style="font-size: 12px; color: #4A5468;">{{a.model}} · {{a.status}}</div>
+              </div>
+            </div>
+            <div style="height: 6px; background: #EDEFF3; border-radius: 3px; overflow: hidden;"><div style="height: 6px; width: {{a.used}}; background: {{a.bar}};"></div></div>
+            <div style="font-size: 12px; color: #4A5468;">{{a.used}} of monthly cap used</div>
+          </a>
+        </sc-for>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      agents: [
+        { name: 'Atlas', role: 'Manager', initial: 'A', color: '#3048E0', model: 'Opus', status: 'Working', used: '42%', bar: '#3048E0' },
+        { name: 'Ops', role: 'Office management', initial: 'O', color: '#0F766E', model: 'Haiku', status: 'Working', used: '18%', bar: '#3048E0' },
+        { name: 'Muse', role: 'Marketing', initial: 'M', color: '#DB2777', model: 'Sonnet', status: 'Working', used: '55%', bar: '#3048E0' },
+        { name: 'Compass', role: 'Project management', initial: 'C', color: '#7C3AED', model: 'Sonnet', status: 'Working', used: '33%', bar: '#3048E0' },
+        { name: 'Ledger', role: 'Project management · reporting', initial: 'L', color: '#B45309', model: 'Sonnet', status: 'Waiting for you', used: '61%', bar: '#3048E0' },
+        { name: 'Forge', role: 'Development', initial: 'F', color: '#334155', model: 'Opus', status: 'Waiting for you', used: '86%', bar: '#B45309' },
+        { name: 'Scout', role: 'Development · QA', initial: 'S', color: '#64748B', model: 'Haiku', status: 'Idle', used: '9%', bar: '#3048E0' },
+        { name: 'Pixel', role: 'Design', initial: 'P', color: '#0369A1', model: 'Sonnet', status: 'Working', used: '47%', bar: '#3048E0' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

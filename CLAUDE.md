@@ -36,7 +36,7 @@ Atlas (manager) sits above the teams. Adding an agent means updating `AgentId` +
 - `settingSources: []` so the developer's own Claude settings don't leak into agent runs. Agents work in `apps/server/workspace/` (git-ignored).
 - Every run has `maxBudgetUsd` from `MAX_BUDGET_USD_PER_TASK`.
 - Office state is in memory (`apps/server/src/office.ts`); no database yet.
-- UI design follows the canvas "AI Office UI Concepts" (office floor, dashboard + approvals, agent desk).
+- UI design follows the canvas "AI Office UI Concepts" (office floor, dashboard + approvals, agent desk). Its source is copied into `docs/design/` (see the README there); the canvas is the place to edit it.
 
 ## Commit rules
 
@@ -47,6 +47,7 @@ Atlas (manager) sits above the teams. Adding an agent means updating `AgentId` +
 
 - [x] Boilerplate: server, web app, shared types, approval queue, policy, MCP config from env
 - [x] Roster organised into the five Digitalfeet teams (added Compass and Pixel)
+- [x] Design canvas updated to the five teams and its source added to `docs/design/`
 - [ ] Persistence (SQLite/Postgres)
 - [ ] Auth for the dashboard
 - [ ] Real connector tokens and per-role testing
