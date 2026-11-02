@@ -1,0 +1,12 @@
+node_modules/
+.next/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+
+# Agent working directory (files the agents create while working)
+apps/server/workspace/*
+!apps/server/workspace/.gitkeep
+*.tsbuildinfo
