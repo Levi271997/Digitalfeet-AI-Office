@@ -2,14 +2,18 @@
 
 A virtual office where Claude agents work as Digitalfeet staff. A manager agent (Atlas) takes a task, splits it up and hands the pieces to specialists. You watch them on a pixel-art office floor and approve anything risky before it happens.
 
-| Agent | Role | Model |
-|---|---|---|
-| Atlas | Manager: plans and delegates | Opus |
-| Ops | Admin & ops: ClickUp/monday.com, meeting notes, invoices | Haiku |
-| Muse | Marketing & content: copy, social, SEO, Canva/Figma | Sonnet |
-| Ledger | Client reporting: quarterly reports, audits, client emails | Sonnet |
-| Forge | Web design & dev: WordPress, plugin updates, Netlify | Opus |
-| Scout | QA: checks pages, links and forms | Haiku |
+The office mirrors Digitalfeet's five teams. Each team has its own room on the office floor.
+
+| Team | Agent | Does | Model |
+|---|---|---|---|
+| (Manager) | Atlas | Plans each task and hands it to the right team | Opus |
+| Office management | Ops | Scheduling, meeting notes, invoices, internal admin | Haiku |
+| Marketing | Muse | Copy, social posts, SEO, campaigns | Sonnet |
+| Project management | Compass | ClickUp/monday.com boards, timelines, client status updates | Sonnet |
+| Project management | Ledger | Quarterly client reports, audits, report emails | Sonnet |
+| Development | Forge | WordPress builds, plugin updates, Netlify deploys | Opus |
+| Development | Scout | QA: checks pages, links and forms | Haiku |
+| Design | Pixel | Website and UI designs in Figma, assets in Canva | Sonnet |
 
 ## Structure
 

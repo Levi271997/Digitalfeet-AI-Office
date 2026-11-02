@@ -16,6 +16,18 @@ Digitalfeet AI Office: Claude agents as office staff for a small web agency, wit
 - `npm run typecheck`: all workspaces
 - `npm run build`: production build of the web app
 
+## Teams
+
+The office mirrors Digitalfeet's five teams (`TeamId` in shared; each is a room on the floor):
+
+- Office management: Ops
+- Marketing: Muse
+- Project management: Compass (boards, timelines), Ledger (client reporting)
+- Development: Forge (WordPress, deploys), Scout (QA)
+- Design: Pixel (Figma, Canva)
+
+Atlas (manager) sits above the teams. Adding an agent means updating `AgentId` + `AGENTS` in shared, `SUBAGENTS` and the team list in `MANAGER_PROMPT` in roster.ts.
+
 ## Key decisions
 
 - Atlas is the SDK's main agent; the other roles are `agents` subagents (`apps/server/src/agents/roster.ts`). Their ids must match `AgentId` in shared.
@@ -34,6 +46,7 @@ Digitalfeet AI Office: Claude agents as office staff for a small web agency, wit
 ## Status
 
 - [x] Boilerplate: server, web app, shared types, approval queue, policy, MCP config from env
+- [x] Roster organised into the five Digitalfeet teams (added Compass and Pixel)
 - [ ] Persistence (SQLite/Postgres)
 - [ ] Auth for the dashboard
 - [ ] Real connector tokens and per-role testing
